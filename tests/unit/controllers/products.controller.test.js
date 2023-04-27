@@ -123,6 +123,7 @@ describe('Testa o controller Products', function () {
       const res = {};
 
       res.status = sinon.stub().returns(res);
+      res.end = sinon.stub().returns();
       
       await productsController.deleteProduct(req, res);
 
