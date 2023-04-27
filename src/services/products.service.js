@@ -34,6 +34,7 @@ const deleteProduct = async (id) => {
     return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found', statusCode: 404 };
   }
   await productsModel.deleteProduct(id);
+  return { type: null, message: '' };
 };
 
 const getBySearch = async (name) => {

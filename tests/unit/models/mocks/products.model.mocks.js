@@ -9,6 +9,13 @@ const productsMock = [
   }
 ];
 
+const productsSearchMock = [
+  {
+    "id": 1,
+    "name": "Martelo de Thor"
+  }
+];
+
 const productMock = {
   "id": 5,
   "name": "Travesseiro do Bruno"
@@ -16,5 +23,6 @@ const productMock = {
 
 module.exports = {
   productsMock,
-  productMock
+  productMock,
+  productsSearchMock
 }

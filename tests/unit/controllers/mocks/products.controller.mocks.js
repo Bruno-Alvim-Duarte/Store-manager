@@ -20,14 +20,54 @@ const productMock = {
   }
 };
 
+const productsSearchMock = {
+  type: null,
+  message: [
+  {
+    "id": 1,
+    "name": "Martelo de Thor"
+  }
+]
+}
+
 const productNotFoundMock = {
   type: 'PRODUCT_NOT_FOUND',
   message: 'Product not found',
   statusCode: 404
 }
 
+const updateProductSucess = {
+  type: null,
+  message: {
+    id: 2,
+    name: 'Travesseiro'
+  }
+}
+
+const updateProductUnsucess = {
+  type: 'PRODUCT_NOT_FOUND',
+  message: 'Product not found',
+  statusCode: 404,
+}
+
+const deleteProductSucess = {
+  type: null,
+  message: ''
+}
+
+const deleteProductUnsucess = {
+  type: 'PRODUCT_NOT_FOUND',
+  message: 'Product not found',
+  statusCode: 404,
+}
+
 module.exports = {
   productMock,
   productsMock,
-  productNotFoundMock
+  productNotFoundMock,
+  productsSearchMock,
+  updateProductSucess,
+  updateProductUnsucess,
+  deleteProductSucess,
+  deleteProductUnsucess
 }
