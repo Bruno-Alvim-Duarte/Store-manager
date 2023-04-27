@@ -93,13 +93,19 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3001/products",
-    "url": "http://localhost:3001/sales/1",
-    "method": "PUT",
+    "url": "http://localhost:3001/products/search?q=M",
+    "method": "GET",
     "sortNum": 0,
     "created": "2023-04-26T22:09:17.810Z",
-    "modified": "2023-04-27T16:27:53.454Z",
+    "modified": "2023-04-27T16:52:51.271Z",
     "headers": [],
-    "params": [],
+    "params": [
+      {
+        "name": "q",
+        "value": "M",
+        "isPath": false
+      }
+    ],
     "body": {
       "type": "json",
       "raw": "[\n  {\"productId\":1,\"quantity\":1},\n  {\"productId\":2,\"quantity\":5}\n]",
