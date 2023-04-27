@@ -1,15 +1,10 @@
-const { salesModel, productsModel } = require('../models');
+const { salesModel } = require('../models');
+const validateSalesFounded = require('./helpers/validateSalesFounded');
 
 const create = async (arrayOfSales) => {
-  const productsFound = arrayOfSales.map(async (sale) => {
-    const product = await productsModel.getById(+sale.productId);
-    if (!product) return false;
-    return true;
-  });
+  const everyProductFounded = await validateSalesFounded(arrayOfSales);
 
-  const productsFoundSolved = await Promise.all(productsFound);
-
-  if (productsFoundSolved.some((product) => !product)) {
+  if (!everyProductFounded) {
     return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found', statusCode: 404 };
   }
 
@@ -38,9 +33,26 @@ const deleteSaleByID = async (id) => {
   await salesModel.deleteSaleByID(id);
 };
 
+const updateSaleByID = async (id, arrayOfProducts) => {
+  const sale = await salesModel.getSaleByID(id);
+  if (!sale) {
+    return { type: 'SALE_NOT_FOUND', message: 'Sale not found', statusCode: 404 };
+  }
+  
+  const everyProductFounded = await validateSalesFounded(arrayOfProducts);
+
+  if (!everyProductFounded) {
+    return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found', statusCode: 404 };
+  }
+
+  const saleUpdated = await salesModel.updateSaleByID(id, arrayOfProducts);
+  return { type: null, message: saleUpdated };
+};
+
 module.exports = {
   create,
   getAll,
   getSaleWithProductsByID,
   deleteSaleByID,
+  updateSaleByID,
 };

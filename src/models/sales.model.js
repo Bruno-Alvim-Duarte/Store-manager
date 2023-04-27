@@ -58,4 +58,25 @@ const deleteSaleByID = async (id) => {
   return affectedRows;
 };
 
-module.exports = { create, getAll, getSaleWithProductsByID, getSaleByID, deleteSaleByID };
+const updateSaleByID = async (id, arrayOfProducts) => {
+  const productsUpdatePromise = arrayOfProducts.map(async (sale) => {
+    await connection.execute(
+      'UPDATE sales_products SET quantity = ? WHERE product_id = ? AND sale_id = ?',
+      [sale.quantity, sale.productId, id],
+);
+    return sale;
+  });
+
+  const productsUpdated = await Promise.all(productsUpdatePromise);
+
+  return { saleId: id, itemsUpdated: productsUpdated };
+};
+
+module.exports = {
+  create,
+  getAll,
+  getSaleWithProductsByID,
+  getSaleByID,
+  deleteSaleByID,
+  updateSaleByID,
+};
