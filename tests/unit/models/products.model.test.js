@@ -70,4 +70,14 @@ describe('Testa a model Products', function () {
       
     })
   })
+
+  describe('Testa a rota pra criar um produto', function () {
+    it('com sucesso', async function () {
+      sinon.stub(connection, 'execute').resolves([{ insertId: 5}]);
+  
+      const response = await productsModel.create('Travesseiro do Bruno');
+  
+      expect(response).to.be.equal(5);
+    })
+  })
 });

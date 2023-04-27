@@ -107,4 +107,15 @@ describe('Testa o service Products', function () {
       
     })
   })
+
+  describe('Testa a rota pra criar um produto', function () {
+    it('com sucesso', async function () {
+      sinon.stub(productsModel, 'create').resolves(5);
+  
+      const response = await productsService.create('Travesseiro do Bruno');
+  
+      expect(response.type).to.be.equal(null);
+      expect(response.message).to.be.deep.equal(productMock);
+    })
+  })
 })

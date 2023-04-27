@@ -147,4 +147,21 @@ describe('Testa o controller Products', function () {
       
     })
   })
+
+  describe('Testa a rota pra criar um produto', function () {
+    it('com sucesso', async function () {
+      sinon.stub(productsService, 'create').resolves(productMock);
+
+      const req = {body: { name: 'Travesseiro do Bruno'}};
+      const res = {};
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+  
+      await productsController.create(req,res);
+  
+      expect(res.status).to.have.been.calledWith(201);
+      expect(res.json).to.have.been.calledWith(productMock.message);
+    })
+  })
 })
