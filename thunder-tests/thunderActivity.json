@@ -93,11 +93,30 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3001/products",
-    "url": "http://localhost:3001/products",
-    "method": "POST",
+    "url": "http://localhost:3001/sales/5",
+    "method": "GET",
     "sortNum": 0,
     "created": "2023-04-26T22:09:17.810Z",
-    "modified": "2023-04-26T22:18:26.752Z",
+    "modified": "2023-04-27T02:19:56.575Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"a\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "b80f2dd4-a497-4102-8086-cff9d3188489",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3001/sales",
+    "url": "http://localhost:3001/sales",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-27T01:22:53.560Z",
+    "modified": "2023-04-27T01:22:53.560Z",
     "headers": [],
     "params": [],
     "body": {
